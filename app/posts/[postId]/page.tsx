@@ -5,13 +5,13 @@ import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 
 export function generateStaticParams() {
-    const posts = getSortedPostsData();
-    
-    return posts.map((post) => ({
-        params: {
-        postId: post.id,
-        },
-    }));
+  const posts = getSortedPostsData();
+
+  return posts.map((post) => ({
+    params: {
+      postId: post.id,
+    },
+  }));
 }
 
 export function generateMetadata({ params }: { params: { postId: string } }) {
@@ -49,7 +49,7 @@ export default async function Post({ params }: { params: { postId: string } }) {
       <p className="mt-0">{pubDate}</p>
       <article>
         {/* <ReactMarkdown>{contentHtml}</ReactMarkdown> */}
-      <section dangerouslySetInnerHTML={{ __html: contentHtml }}>
+        <section dangerouslySetInnerHTML={{ __html: contentHtml }}>
           <p>
             <Link href="/">Back to home</Link>
           </p>
